@@ -1,5 +1,6 @@
 import './App.css';
 import Form from './components/Form';
+import Processing from './components/Processing';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <h1>ONI - GRADE</h1>
       <h2>Onion Grading : New Batch</h2>
       <Form />
+      <Processing />
     </div>
   );
 }
