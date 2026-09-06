@@ -6,7 +6,11 @@ function Processing() {
 
   return (
     <div>
-      Processing component works
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <p>{result}</p>
+      )}
     </div>
   );
 }
