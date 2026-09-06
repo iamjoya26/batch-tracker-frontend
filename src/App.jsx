@@ -1,7 +1,14 @@
+import './App.css';
+import Form from './components/Form';
+
 function App() {
-   return ( 
-   <h1>Batch Tracker</h1>
-   )
-   }
-   
-export default App
+  return (
+    <div className="form-card">
+      <h1>ONI - GRADE</h1>
+      <h2>Onion Grading : New Batch</h2>
+      <Form />
+    </div>
+  );
+}
+
+export default App;
