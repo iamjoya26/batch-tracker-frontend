@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './components/Form';
 import ImageUpload from './components/ImageUpload';
+import Processing from './components/Processing';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <h2>Onion Grading : New Batch</h2>
       <Form />
       <ImageUpload />
+      <Processing />
     </div>
   );
 }
