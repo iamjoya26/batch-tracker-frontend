@@ -10,9 +10,9 @@ function App() {
     <div className="form-card">
       <h1>ONI - GRADE</h1>
       <h2>Onion Grading : New Batch</h2>
-      <Form />
-      <ImageUpload />
-      <Processing />
+      {stage === 'form' && <Form />}
+      {stage === 'upload' && <ImageUpload />}
+      {stage === 'processing' && <Processing />}
     </div>
   );
 }
