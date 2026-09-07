@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Form() {
+function Form({ onNext }) {
   const [batchId, setBatchId] = useState('');
   const [supplier, setSupplier] = useState('');
   const [center, setCenter] = useState('');
@@ -32,6 +32,10 @@ function Form() {
       <div className="field-row">
         <label>Sample Size: </label>
         <input type="number" value={sampleSize} onChange={(e) => setSampleSize(e.target.value)} />
+      </div>
+
+      <div className="field-row">
+        <button onClick={onNext}>Next</button>
       </div>
     </div>
   );
