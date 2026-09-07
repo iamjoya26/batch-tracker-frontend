@@ -3,6 +3,14 @@ import { useState } from 'react';
 function ImageUpload({ onNext }) {
   const [previewUrl, setPreviewUrl] = useState(null);
 
+  const handleNext = () => {
+    if (!previewUrl) {
+      alert('Please choose an image before continuing.');
+      return;
+    }
+    onNext();
+  };
+
   return (
     <div>
       <p>Upload an image</p>
@@ -21,7 +29,7 @@ function ImageUpload({ onNext }) {
       )}
 
       <div className="field-row">
-        <button onClick={onNext}>Next</button>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );

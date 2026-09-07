@@ -7,6 +7,14 @@ function Form({ onNext }) {
   const [date, setDate] = useState('');
   const [sampleSize, setSampleSize] = useState('');
 
+  const handleNext = () => {
+    if (!batchId || !supplier || !center || !date || !sampleSize) {
+      alert('Please fill all fields before continuing.');
+      return;
+    }
+    onNext();
+  };
+
   return (
     <div>
       <div className="field-row">
@@ -35,7 +43,7 @@ function Form({ onNext }) {
       </div>
 
       <div className="field-row">
-        <button onClick={onNext}>Next</button>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );
