@@ -8,10 +8,45 @@ function Form({ onNext }) {
   const [sampleSize, setSampleSize] = useState('');
 
   const handleNext = () => {
-    if (!batchId || !supplier || !center || !date || !sampleSize) {
-      alert('Please fill all fields before continuing.');
+    // Batch ID: only letters and numbers (or a combination), no spaces/symbols
+    const batchIdPattern = /^[a-zA-Z0-9]+$/;
+    if (!batchId || !batchIdPattern.test(batchId)) {
+      alert('Batch ID must contain only letters and/or numbers (no spaces or symbols).');
       return;
     }
+
+    // Supplier: only letters and spaces (a valid name)
+    const namePattern = /^[a-zA-Z\s]+$/;
+    if (!supplier || !namePattern.test(supplier)) {
+      alert('Supplier must contain only letters (no numbers or symbols).');
+      return;
+    }
+
+    // Center: only letters and spaces (a valid name)
+    if (!center || !namePattern.test(center)) {
+      alert('Center must contain only letters (no numbers or symbols).');
+      return;
+    }
+
+    // Date: must be filled and not a future date
+    if (!date) {
+      alert('Please select a valid date.');
+      return;
+    }
+    const selectedDate = new Date(date);
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+    if (isNaN(selectedDate.getTime()) || selectedDate > today) {
+      alert('Please select a valid date (today or earlier).');
+      return;
+    }
+
+    // Sample Size: must be a positive number
+    if (!sampleSize || Number(sampleSize) <= 0) {
+      alert('Sample Size must be a valid number greater than 0.');
+      return;
+    }
+
     onNext();
   };
 
