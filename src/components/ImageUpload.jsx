@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ImageUpload() {
+function ImageUpload({ onNext }) {
   const [previewUrl, setPreviewUrl] = useState(null);
 
   return (
@@ -19,6 +19,10 @@ function ImageUpload() {
       {previewUrl && (
         <img src={previewUrl} alt="preview" width="200" />
       )}
+
+      <div className="field-row">
+        <button onClick={onNext}>Next</button>
+      </div>
     </div>
   );
 }

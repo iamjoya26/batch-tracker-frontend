@@ -11,7 +11,7 @@ function App() {
       <h1>ONI - GRADE</h1>
       <h2>Onion Grading : New Batch</h2>
       {stage === 'form' && <Form onNext={() => setStage('upload')} />}
-      {stage === 'upload' && <ImageUpload />}
+      {stage === 'upload' && <ImageUpload onNext={() => setStage('processing')} />}
       {stage === 'processing' && <Processing />}
     </div>
   );
