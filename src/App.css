@@ -51,3 +51,31 @@ h1 {
   margin-bottom: 28px;
   color: #4a3521;
 }
+
+/* Processing section (Loading state) */
+.processing-section {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Result section */
+.result-section {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.result-section p {
+  font-size: 16px;
+  margin: 8px 0;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  border-left: 4px solid #4caf50;
+}

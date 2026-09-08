@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function Processing() {
-  const [status, setStatus] = useState('loading');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Simulate AI processing taking 2 seconds
     const timer = setTimeout(() => {
-      setStatus('done');
+      setIsLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -13,18 +14,15 @@ function Processing() {
 
   return (
     <div>
-      {status === 'loading' && (
-        <p>Loading...</p>
-      )}
-
-      {status === 'done' && (
-        <div>
-          <p>Result:</p>
-          <ul>
-            <li>Grade A: 76%</li>
-            <li>Grade B: 16%</li>
-            <li>Damaged: 8%</li>
-          </ul>
+      {isLoading ? (
+        <div className="processing-section">
+          Loading...
+        </div>
+      ) : (
+        <div className="result-section">
+          <p>Grade A: 76%</p>
+          <p>Damaged: 8%</p>
+          <p>Grade B: 16%</p>
         </div>
       )}
     </div>

@@ -7,6 +7,26 @@ function Form({ onNext }) {
   const [date, setDate] = useState('');
   const [sampleSize, setSampleSize] = useState('');
 
+  // Today's date in YYYY-MM-DD format (required by the date input's max attribute)
+  const today = new Date().toISOString().split('T')[0];
+
+  const handleSampleSizeChange = (e) => {
+    const value = e.target.value;
+
+    // Allow empty (so user can clear and retype)
+    if (value === '') {
+      setSampleSize(value);
+      return;
+    }
+
+    // Only allow whole positive numbers (no negatives, no decimals)
+    const isWholeNumber = /^[0-9]+$/.test(value);
+
+    if (isWholeNumber) {
+      setSampleSize(value);
+    }
+  };
+
   const handleNext = () => {
     // Batch ID: only letters and numbers (or a combination), no spaces/symbols
     const batchIdPattern = /^[a-zA-Z0-9]+$/;
@@ -34,9 +54,9 @@ function Form({ onNext }) {
       return;
     }
     const selectedDate = new Date(date);
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
-    if (isNaN(selectedDate.getTime()) || selectedDate > today) {
+    const todayDate = new Date();
+    todayDate.setHours(23, 59, 59, 999);
+    if (isNaN(selectedDate.getTime()) || selectedDate > todayDate) {
       alert('Please select a valid date (today or earlier).');
       return;
     }
@@ -69,12 +89,22 @@ function Form({ onNext }) {
 
       <div className="field-row">
         <label>Date: </label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input
+          type="date"
+          value={date}
+          max={today}
+          onChange={(e) => setDate(e.target.value)}
+        />
       </div>
 
       <div className="field-row">
         <label>Sample Size: </label>
-        <input type="number" value={sampleSize} onChange={(e) => setSampleSize(e.target.value)} />
+        <input
+          type="text"
+          inputMode="numeric"
+          value={sampleSize}
+          onChange={handleSampleSizeChange}
+        />
       </div>
 
       <div className="field-row">
