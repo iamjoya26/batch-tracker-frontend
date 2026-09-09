@@ -108,7 +108,7 @@ function Form({ onNext }) {
       </div>
 
       <div className="field-row">
-        <button onClick={handleNext}>Next</button>
+      <button className="submit-btn" onClick={handleNext}>Next</button>
       </div>
     </div>
   );

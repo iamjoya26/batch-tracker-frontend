@@ -29,17 +29,17 @@ function ImageUpload({ onNext }) {
   return (
     <div>
       <p>Upload an image</p>
-      <input
+      <input className="file-input"
         type="file"
         accept=".jpg,.jpeg,.png"
         onChange={handleFileChange}
       />
       {previewUrl && (
-        <img src={previewUrl} alt="preview" width="200" />
+        <img className="preview-img" src={previewUrl} alt="preview" width="200" />
       )}
 
       <div className="field-row">
-        <button onClick={handleNext}>Next</button>
+        <button className="submit-btn" onClick={handleNext}>Next</button>
       </div>
     </div>
   );
